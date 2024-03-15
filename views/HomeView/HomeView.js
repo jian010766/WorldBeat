@@ -7,6 +7,9 @@ class HomeView {
 		// set the content render target
 		this.renderTarget = app.navigator.topPage;
 
+		// clear content
+		this.renderTarget.querySelector(".content").innerHTML = " ";
+
 		// invoke the render method.
 		this.render();
 	}
@@ -15,18 +18,25 @@ class HomeView {
 	render() {
 		console.log("HomeView is being rendered.");
 
-		this.renderTarget.querySelector(".content").innerHTML += `
-		<ons-button onclick="app.switchView('SecondView')">Click Me</ons-button>
-		<ons-button onclick="app.currentView.doSomethingSpecial()">Do something special</ons-button>`;
+		this.renderTarget.querySelector(".content").innerHTML = `
+		<ons-button onclick="app.switchView('SearchView')">Search View</ons-button>
+		<ons-button onclick="app.switchView('LibraryView')">Library View</ons-button>
+		<ons-button onclick="app.switchView('PlayerView')">Player View</ons-button>`;
+
+
+
+		
 	}
 
-	doSomethingSpecial() {
-		ons.notification.alert("Hey, this is something special.");
-	}
+
+	// doSomethingSpecial() {
+	// 	// ons.notification.alert("Hey, this is something special.");
+	// 	app.switchView("LibraryView");
+	// }
 
 	// executed before view is closed
 	destroy() {
-		console.log("SecondView is being destroyed.");
+		console.log("SearchView is being destroyed.");
 	}
 }
 

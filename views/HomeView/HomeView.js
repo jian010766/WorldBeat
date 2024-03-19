@@ -21,7 +21,9 @@ class HomeView {
 		this.renderTarget.querySelector(".content").innerHTML = `
 		<ons-button onclick="app.switchView('SearchView')">Search View</ons-button>
 		<ons-button onclick="app.switchView('LibraryView')">Library View</ons-button>
-		<ons-button onclick="app.switchView('PlayerView')">Player View</ons-button>`;
+		<ons-button onclick="app.switchView('PlayerView')">Player View</ons-button>
+
+		<ons-button onclick="app.showPlayerForSong('song1')">Play Song 1</ons-button>`;
 
 
 

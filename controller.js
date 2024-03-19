@@ -33,9 +33,18 @@ var app = {
 		// re-instate the view controller for the current page.
 		app.viewChangeHandler();
 	},
-	switchView: (viewId, method='pushPage') => {
+	switchView: (viewId, method='pushPage', customData = '') => {
 		console.log("app.switchView: ", viewId);
-		app.navigator[method]("views/" + viewId + "/" + viewId + ".html");
+		app.navigator[method]("views/" + viewId + "/" + viewId + ".html", {
+			data: customData
+		});
+
+	},
+	showPlayerForSong: songId => {
+		console.log("app.showPlayerForSong", songId);
+		// 1. load the player view
+		app.switchView("PlayerView", 'pushPage', {songId: songId});
+		// 2. pass in the song id as a custom data property
 
 	}
 }

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continent Buttons</title>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <style>
+        #map {
+            position: relative;
+            height: 50vh;
+        }
+        .continent-button {
+            position: absolute;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+        }
+        #north-america {
+            top: 175px;
+            left: 175px;
+            background-color: #EA151E;
+        }
+        #south-america {
+            top: 350px;
+            left: 275px;
+            background-color: #F49528;
+        }
+        #europe {
+            top: 160px;
+            left: 520px;
+            background-color: #17B6D6;
+        }
+        #africa {
+            top: 275px;
+            left: 520px;
+            background-color: #F8CD50;
+        }
+        #asia {
+            top: 155px;
+            left: 700px;
+            background-color: #8EC641;
+        }
+        #australia {
+            top: 380px;
+            left: 775px;
+            background-color: #00A246;
+        }
+    </style>
+</head>
+<body>
+    <ons-page>
+        <ons-toolbar>
+            <div class="center">Map Tech Demo</div>
+        </ons-toolbar>
+
+        <ons-tabbar swipeable position="auto">
+            <ons-tab page="mapView.html" label="mapView" icon="md-n-1-square, material:md-home" active-icon="md-pin"></ons-tab>
+            <ons-tab page="searchView.html" label="searchView" icon="md-n-2-square" active-icon="md-pin"></ons-tab>
+            <ons-tab page="extraView.html" label="Extra View" icon="md-n-3-square" active-icon="md-pin"></ons-tab>
+        </ons-tabbar>
+    </ons-page>
+
+
+        <template id="mapView.html">
+            <ons-page id="mapView">
+                <div class="mapBox">
+                    <img id="map" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSULl1ffQb7CYtqT3kKcFWvVRB9Ujsj9APcKKm_lVuMQ9Mih39okn_rP5Wo9JJRRQ1BkGU&usqp=CAU" alt="World Map">
+
+                    <button id="north-america" class="continent-button" onclick="navigateAndFill('North America')">North America</button>
+                    <button id="south-america" class="continent-button" onclick="navigateAndFill('South America')">South America</button>
+                    <button id="europe" class="continent-button" onclick="navigateAndFill('Europe')">Europe</button>
+                    <button id="africa" class="continent-button" onclick="navigateAndFill('Africa')">Africa</button>
+                    <button id="asia" class="continent-button" onclick="navigateAndFill('Asia')">Asia</button>
+                    <button id="australia" class="continent-button" onclick="navigateAndFill('Australia')">Australia</button>
+                </div>
+            </ons-page>
+        </template>
+    
+
+    <template id="searchView.html">
+        <ons-page id="searchView">
+            <ons-page>
+                <input type="text" id="textbox" placeholder="Textbox">
+            </ons-page>
+        </ons-page>
+    </template>
+
+    <script>
+        function navigateAndFill(content) {
+            document.querySelector('#myNavigator').pushPage('searchView.html');
+        }
+
+        document.addEventListener('postpush', function(event) {
+            if (event.enterPage.matches('#searchView')) {
+                document.getElementById('textbox').value = event.enterPage.querySelector('#textbox').placeholder;
+            }
+        });
+    </script>
+
+</body>
+</html>

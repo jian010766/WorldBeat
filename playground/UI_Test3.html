@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>World Music Player</title>
+	<script src="mapdata.js"></script>
+    <script src="worldmap.js"></script>
+    <script src="lib.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  	<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  	
+<style>
+    #map {
+        position: relative;
+        height: 50vh;
+    }
+    .continent-button {
+        position: absolute;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        padding: 5px;
+        color: white;
+        font-size: 12px;
+        text-align: center;
+    }
+    #north-america {
+        top: 175px;
+        left: 175px;
+        background-color: #EA151E;
+    }
+    #south-america {
+        top: 350px;
+        left: 275px;
+        background-color: #F49528;
+    }
+    #europe {
+        top: 160px;
+        left: 520px;
+        background-color: #17B6D6;
+    }
+    #africa {
+        top: 275px;
+        left: 520px;
+        background-color: #F8CD50;
+    }
+    #asia {
+        top: 155px;
+        left: 700px;
+        background-color: #8EC641;
+    }
+    #australia {
+        top: 380px;
+        left: 775px;
+        background-color: #00A246;
+    }
+</style>
+
+</head>
+
+<body>
+	<ons-navigator swipeable id="myNavigator" page="tab1">
+<!-- toolbar top (for title only)-->
+		<ons-page>
+			  <ons-toolbar>
+			    <div class="center" style="font-size: 36px">World Music Player</div>
+			  </ons-toolbar>
+	<!-- bottom tabbar -->
+			  <ons-tabbar swipeable position="auto">
+			    <ons-tab page="mapView" label="MAP" active>
+			    </ons-tab>
+			    <ons-tab page="searchView" label="SEARCH">
+			    </ons-tab>
+			    <ons-tab page="libraryView" label="LIB" >
+			    </ons-tab>
+			  </ons-tabbar>
+		</ons-page>
+	</ons-navigator>
+
+<!-- MAP -->
+	<template id="mapView">
+		<ons-page>
+		   <p style="text-align: center; font-size:30px">
+		      Pick a Location
+		   </p>	
+
+
+			
+			<img id="map" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSULl1ffQb7CYtqT3kKcFWvVRB9Ujsj9APcKKm_lVuMQ9Mih39okn_rP5Wo9JJRRQ1BkGU&usqp=CAU" alt="World Map">
+
+			<button id="north-america" class="continent-button" onclick="alert('Continent: North America')">North America</button>
+			<button id="south-america" class="continent-button" onclick="alert('Continent: South America')">South America</button>
+			<button id="europe" class="continent-button" onclick="alert('Continent: Europe')">Europe</button>
+			<button id="africa" class="continent-button" onclick="alert('Continent: Africa')">Africa</button>
+			<button id="asia" class="continent-button" onclick="alert('Continent: Asia')">Asia</button>
+			<button id="australia" class="continent-button" onclick="alert('Continent: Australia')">Australia</button>
+					
+		
+			
+
+<!-- Map ends here -->
+
+
+		</ons-page>
+
+	</template>
+
+<!-- SEARCH -->
+	<template id="searchView">
+		<ons-page>
+		   
+<!-- search box -->
+<!-- to type in a specific search OR get populated with the selected country -->
+		   	<div class="searchBox" style="margin: auto;">
+		    	<p style="text-align: center; margin-top: 10px;">
+				  <ons-search-input
+				    placeholder="Search"
+				    onchange="ons.notification.alert('Searched for: ' + this.value)">
+				    	
+				   </ons-search-input>
+				</p>
+		 	</div>
+
+
+<!-- popup menu -->
+
+	    	<div class="center" style="text-align: center; font-size: 30px; padding: 15px;">Filters</div>
+	  
+
+		  	<div class="filters" style="text-align: center;">
+
+			  <h3>Era</h3>
+			  <ons-select id="choose-sel-era" onchange="editSelects(event)">
+			    <option value="1950s">50s</option>
+			    <option value="1960s">60s</option>
+			    <option value="1950s">70s</option>
+			  </ons-select>
+
+
+			  <h3>Style</h3>
+			  <ons-select id="choose-sel-style" onchange="editSelects(event)">
+			    <option value="rock">Rock</option>
+			    <option value="pop">Pop</option>
+			    <option value="folk">Folk</option>
+			  </ons-select>
+
+
+		  	</div>
+  	
+		    
+		  </ons-page>
+
+		</template>
+
+<!-- LIBRARY -->
+		<template id="libraryView">
+		  <ons-page>
+		    <p style="text-align: center; font-size:30px">
+		      Library
+		   </p>	
+			<div class="listContent">
+
+				<ul class="list">
+
+				  <li class="list-item list-item--tappable">
+				    <div class="list-item__center">Julio Iglesias</div>
+				  </li>
+				  <li class="list-item list-item--tappable">
+				    <div class="list-item__center">Frank Zappa</div>
+				  </li>
+
+				</ul>
+
+			</div>
+		    
+		  </ons-page>
+
+		</template>
+
+
+<!-- Favorites PlayList page -->
+<!-- when Favorites list item is tapped it takes you here to a new list of sngs marked as favorites -->
+
+
+<!-- Following... Trying to load code created in class for songs list for Library page but not working  -->
+
+
+
+<script type="text/javascript">
+
+	// switcher code
+var app = {
+	mainView: null,
+	init: () => {
+		// ...
+		document.querySelector("ons-navigator").addEventListener("postpush", event => {
+			// handle view changes here.
+
+			if(topPage.id == "libraryView") {
+				app.mainView = new LibraryView();
+			}
+			else if(topPage.id == "mapView") {
+				app.mainView = new MapView();
+			}
+			else if(topPage.id == "searchView") {
+				app.mainView = new SearchView();
+			}
+			// ...
+
+		})
+	},
+	// user-activated view changing actions
+	switchView: viewId => {
+
+		if(viewId == "libraryView") {
+			document.querySelector("ons-navigator")
+				.pushPage("libraryView");
+		}
+		else if(viewId == "mapView") {
+			document.querySelector("ons-navigator")
+				.pushPage("mapView");
+
+		}
+		else if(viewId == "searchView") {
+			document.querySelector("ons-navigator")
+				.pushPage("searchView");
+
+		}
+	}
+
+}
+
+	
+
+
+ons.ready(() => {
+
+	
+})
+
+	
+
+
+
+</script>
+
+</body>
+
+
+</html>

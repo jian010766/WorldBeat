@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>WorlBeat Navigation</title>
+
+	<!-- onsen stuff -->
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+  	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+  	<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+  	<!-- view controller -->
+	<script type="text/javascript" src="controller.js"></script>
+
+	<!-- individual views -->
+	<script type="text/javascript" src="views/HomeView/HomeView.js"></script>
+	<script type="text/javascript" src="views/SearchView/SearchView.js"></script>
+	<script type="text/javascript" src="views/LibraryView/LibraryView.js"></script>
+	<script type="text/javascript" src="views/PlayerView/PlayerView.js"></script>
+
+</head>
+<body>
+
+	<!-- <ons-navigator swipeable id='appNavigator'> -->
+
+	<ons-page id='SearchView'>
+		<ons-toolbar>
+			<div class="left"><ons-back-button></ons-back-button></div>
+			<div class="center">Search View</div>
+		</ons-toolbar>
+		<div class="content">
+			<p>This is the search page.</p>
+		</div>
+	</ons-page>
+	
+	<ons-navigator swipeable id="appNavigator">
+				<ons-tabbar swipeable position="auto">
+				    <ons-tab onclick="app.switchView('HomeView')" label="MAP" >
+				    </ons-tab>
+				    <ons-tab label="SEARCH" active>
+				    </ons-tab>
+				    <ons-tab onclick="app.switchView('LibraryView')" label="LIBRARY" >
+				    </ons-tab>
+				</ons-tabbar>
+			</ons-navigator>
+
+			<div class="searchBox" style="margin: auto;">
+		    	<p style="text-align: center; margin-top: 10px;">
+				  <ons-search-input
+				    placeholder="Search"
+				    onchange="ons.notification.alert('Searched for: ' + this.value)">
+				    	
+				   </ons-search-input>
+				</p>
+		 	</div>
+
+		 	<div class="center" style="text-align: center; font-size: 30px; padding: 15px;">Filters</div>
+	  
+
+		  	<div class="filters" style="text-align: center;">
+
+			  <h3>Era</h3>
+			  <ons-select id="choose-sel-era" onchange="editSelects(event)">
+			    <option value="1950s">50s</option>
+			    <option value="1960s">60s</option>
+			    <option value="1950s">70s</option>
+			  </ons-select>
+
+
+			  <h3>Style</h3>
+			  <ons-select id="choose-sel-style" onchange="editSelects(event)">
+			    <option value="rock">Rock</option>
+			    <option value="pop">Pop</option>
+			    <option value="folk">Folk</option>
+			  </ons-select>
+
+
+		  	</div>
+
+		  </ons-navigator>
+</body>
+</html>
+
+
+
+
+

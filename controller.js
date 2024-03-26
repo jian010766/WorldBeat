@@ -33,30 +33,11 @@ var app = {
 		// re-instate the view controller for the current page.
 		app.viewChangeHandler();
 	},
-	switchView: (viewId, method='pushPage', customData = '') => {
+	switchView: (viewId, method='pushPage') => {
 		console.log("app.switchView: ", viewId);
-		app.navigator[method]("views/" + viewId + "/" + viewId + ".html", {
-			data: customData
-		});
-
-	},
-	showPlayerForSong: songId => {
-		console.log("app.showPlayerForSong", songId);
-		// 1. load the player view
-		app.switchView("PlayerView", 'pushPage', {songId: songId});
-		// 2. pass in the song id as a custom data property
+		app.navigator[method]("views/" + viewId + "/" + viewId + ".html");
 
 	}
-	// editSelects: event => {
-	// 	console.log("app.currentView.editSelects", input);
-
-	// 	document.getElementById("choose-sel-era").removeAttribute("modifier");
-	// 	  if (event.target.value == "1950s" || event.target.value == "1960s") {
-	// 	    document.getElementById("choose-sel-era").setAttribute("modifier", event.target.value);
-	// 	}
-	// }
-	
-
 }
 
 var viewController = {

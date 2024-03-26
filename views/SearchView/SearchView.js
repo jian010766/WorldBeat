@@ -8,7 +8,7 @@ class SearchView {
 
 		this.renderTarget = document.getElementById('SearchView');
 
-		this.renderTarget.querySelector(".content").innerHTML = " ";
+		// this.renderTarget.querySelector(".content").innerHTML = " ";
 
 		// this.addEventListeners();
 		
@@ -31,62 +31,6 @@ class SearchView {
 	render() {
 		console.log("SearchView is being rendered.");
 
-		this.renderTarget.querySelector(".content").innerHTML = `
-			<ons-navigator swipeable id="appNavigator">
-				<ons-tabbar swipeable position="auto">
-				    <ons-tab onclick="app.switchView('HomeView')" label="MAP" >
-				    </ons-tab>
-				    <ons-tab label="SEARCH" active>
-				    </ons-tab>
-				    <ons-tab onclick="app.switchView('LibraryView')" label="LIBRARY" >
-				    </ons-tab>
-				</ons-tabbar>
-			</ons-navigator>
-		
-
-			<div class="searchBox" style="margin: auto;">
-		    	<p style="text-align: center; margin-top: 10px;">
-				  <ons-search-input id="searchInput"
-				  	onclick="app.currentView.inputListen"
-				    placeholder="Search"
-				    onchange="ons.notification.alert('Searched for: ' + this.value)">
-				    	
-				   </ons-search-input>
-				</p>
-		 	</div>
-
-		 	<ons-card>
-		 	<div class="center" style="text-align: center; font-size: 20px; padding: 15px;">Region</div>
-		  	<div class="region" style="text-align: center;">
-		  	// box with region clicked on maps//
-		  	</ons-card>
-
-		 	<div class="center" style="text-align: center; font-size: 30px; padding: 15px;">Filters</div>
-		  	<div class="filters" style="text-align: center;">
-
-			  <h3>Era</h3>
-
-
-			  <ons-select id="choose-sel-era" onchange="app.currentView.editSelects(event)">
-			    <option value="1950s">50s</option>
-			    <option value="1960s">60s</option>
-			    <option value="1950s">70s</option>
-			  </ons-select>
-
-
-			  <h3>Style</h3>
-			  <ons-select id="choose-sel-style" onchange="app.currentView.editSelects(event)">
-			    <option value="rock">Rock</option>
-			    <option value="pop">Pop</option>
-			    <option value="folk">Folk</option>
-			  </ons-select>
-
-
-		  	</div>
-
-
-
-		`;
 		
 	}
 	

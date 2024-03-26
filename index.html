@@ -22,7 +22,24 @@
 </head>
 <body>
 
-	<ons-navigator swipeable id='appNavigator'></ons-navigator>
+	<ons-navigator swipeable id='appNavigator'>
+		
+		<ons-page>
+			
+
+		<ons-tabbar position="auto" id='appTabBar'>
+		    <ons-tab data-tabIndex='0' data-viewId='HomeView' page="views/HomeView/HomeView.html" label="MAP" >
+		    </ons-tab>
+		    <ons-tab data-tabIndex='1' data-viewId='SearchView' page="views/SearchView/SearchView.html" label="SEARCH" active>
+		    </ons-tab>
+		    <ons-tab data-tabIndex='2' data-viewId='LibraryView' page="views/LibraryView/LibraryView.html" label="LIBRARY" >
+		    </ons-tab>
+		</ons-tabbar>
+	
+
+		</ons-page>
+
+	</ons-navigator>
 
 		
 	

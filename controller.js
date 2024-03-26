@@ -47,14 +47,14 @@ var app = {
 		// 2. pass in the song id as a custom data property
 
 	}
-	editSelects: event => {
-		console.log("app.currentView.editSelects", input);
+	// editSelects: event => {
+	// 	console.log("app.currentView.editSelects", input);
 
-		document.getElementById("choose-sel-era").removeAttribute("modifier");
-		  if (event.target.value == "1950s" || event.target.value == "1960s") {
-		    document.getElementById("choose-sel-era").setAttribute("modifier", event.target.value);
-		}
-	}
+	// 	document.getElementById("choose-sel-era").removeAttribute("modifier");
+	// 	  if (event.target.value == "1950s" || event.target.value == "1960s") {
+	// 	    document.getElementById("choose-sel-era").setAttribute("modifier", event.target.value);
+	// 	}
+	// }
 	
 
 }

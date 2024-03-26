@@ -3,13 +3,29 @@ class SearchView {
 	// initialization tasks here.
 	constructor() {
 		console.log("SearchView is being initialized.");
-		this.renderTarget = document.getElementById('SearchView');
-		this.renderTarget.querySelector(".content").innerHTML = " ";
+		
 		this.viewRenderTarget = app.navigator.topPage;
 
+		this.renderTarget = document.getElementById('SearchView');
+
+		this.renderTarget.querySelector(".content").innerHTML = " ";
+
+		// this.addEventListeners();
+		
 		this.render();
-		this.addEventListeners();
 	}
+
+	
+
+	// editSelects (event){
+	// 	// console.log("app.currentView.editSelects", input);
+	// 	document.getElementById("choose-sel-era").removeAttribute("modifier");
+	// 	  if (event.target.value == "1950s" || event.target.value == "1960s") {
+	// 	    document.getElementById("choose-sel-era").setAttribute("modifier", event.target.value);
+	// 	}
+	// }
+
+
 
 	// render-related tasks here.
 	render() {
@@ -27,10 +43,11 @@ class SearchView {
 				</ons-tabbar>
 			</ons-navigator>
 		
-		   
+
 			<div class="searchBox" style="margin: auto;">
 		    	<p style="text-align: center; margin-top: 10px;">
 				  <ons-search-input id="searchInput"
+				  	onclick="app.currentView.inputListen"
 				    placeholder="Search"
 				    onchange="ons.notification.alert('Searched for: ' + this.value)">
 				    	
@@ -38,13 +55,19 @@ class SearchView {
 				</p>
 		 	</div>
 
-		 	<div class="center" style="text-align: center; font-size: 30px; padding: 15px;">Filters</div>
-	  
+		 	<ons-card>
+		 	<div class="center" style="text-align: center; font-size: 20px; padding: 15px;">Region</div>
+		  	<div class="region" style="text-align: center;">
+		  	// box with region clicked on maps//
+		  	</ons-card>
 
+		 	<div class="center" style="text-align: center; font-size: 30px; padding: 15px;">Filters</div>
 		  	<div class="filters" style="text-align: center;">
 
 			  <h3>Era</h3>
-			  <ons-select id="choose-sel-era" onchange="editSelects(event)">
+
+
+			  <ons-select id="choose-sel-era" onchange="app.currentView.editSelects(event)">
 			    <option value="1950s">50s</option>
 			    <option value="1960s">60s</option>
 			    <option value="1950s">70s</option>
@@ -52,7 +75,7 @@ class SearchView {
 
 
 			  <h3>Style</h3>
-			  <ons-select id="choose-sel-style" onchange="editSelects(event)">
+			  <ons-select id="choose-sel-style" onchange="app.currentView.editSelects(event)">
 			    <option value="rock">Rock</option>
 			    <option value="pop">Pop</option>
 			    <option value="folk">Folk</option>
@@ -67,22 +90,24 @@ class SearchView {
 		
 	}
 	
+	
 
-	addEventListeners() {
+
+	// addEventListeners() {
 		
 
-		document.getElementById('searchInput').addEventListener('input', (event) => {
-			ons.notification.alert('Searched for: ' + event.target.value);
-		});
+	// 	document.getElementById("searchInput").addEventListener("input", (event) => {
+	// 		ons.notification.alert('Searched for: ' + event.target.value);
+	// 	});
 
-		document.getElementById('choose-sel-era').addEventListener('onchange', (event) => {
-			editSelects(event);
-		});
+	// 	document.getElementById('choose-sel-era').addEventListener('onchange', (event) => {
+	// 		editSelects(event);
+	// 	});
 
-		document.getElementById('choose-sel-style').addEventListener('onchange', (event) => {
-			editSelects(event);
-		});
-	}
+	// 	document.getElementById('choose-sel-style').addEventListener('onchange', (event) => {
+	// 		editSelects(event);
+	// 	});
+	// }
 // to here
 
 
@@ -96,7 +121,14 @@ class SearchView {
 
 
 }
+	
+	inputListen:() => {
+		
+		document.getElementById("searchInput").addEventListener("input", (event) => {
+			ons.notification.alert('Searched for: ' + event.target.value);
+		});
 
+	}
 
 
 
